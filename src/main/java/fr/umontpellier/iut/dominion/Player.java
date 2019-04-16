@@ -228,7 +228,9 @@ public class Player {
      * carte et la place dans la main du joueur.
      */
     public Card drawToHand() {
-        throw new RuntimeException("Not Implemented");
+        Card carte = drawCard();
+        addToHand(carte);
+        return carte;
     }
 
     /**
