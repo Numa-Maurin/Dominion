@@ -530,7 +530,9 @@ public class Player {
      * Les compteurs de nombre d'actions, de nombre d'achats et argent sont initialisés
      */
     public void startTurn() {
-        throw new RuntimeException("Not Implemented");
+        this.numberOfBuys = 1;
+        this.numberOfActions = 1;
+        this.money = 0;
     }
 
     /**
