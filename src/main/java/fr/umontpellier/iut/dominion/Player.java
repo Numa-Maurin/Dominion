@@ -130,11 +130,11 @@ public class Player {
      * défausse, la pioche et en jeu)
      */
     public ListOfCards getAllCards() {
-        ListOfCards liste = new ListOfCards(hand);
-        liste.addAll(discard);
-        liste.addAll(draw);
-        liste.addAll(inPlay);
-        return liste;
+        ListOfCards deck = getCardsInHand();
+        deck.addAll(discard);
+        deck.addAll(draw);
+        deck.addAll(inPlay);
+        return deck;
     }
 
     /**
@@ -145,7 +145,12 @@ public class Player {
      * {@code getVictoryValue()}) des cartes
      */
     public int getVictoryPoints() {
-        throw new RuntimeException("Not Implemented");
+        ListOfCards deck = getAllCards();
+        int vp = 0;
+        for (Card carte : deck) {
+            vp += carte.getVictoryValue(this);
+        }
+        return vp;
     }
 
     /**
