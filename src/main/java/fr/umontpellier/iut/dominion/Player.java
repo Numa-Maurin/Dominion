@@ -507,7 +507,21 @@ public class Player {
      * - Le joueur pioche 5 cartes en main
      */
     public void endTurn() {
-        throw new RuntimeException("Not Implemented");
+        this.numberOfActions = 0;
+        this.numberOfBuys = 0;
+        this.money = 0;
+        for (Card carte : this.inPlay) {
+            this.discard.add(carte);
+            this.inPlay.remove(carte);
+        }
+        for (Card carte : this.hand) {
+            this.discard.add(carte);
+            this.hand.remove(carte);
+        }
+        for (int i=0; i<5; i++) {
+            Card carte = this.draw.remove(0);
+            this.hand.add(carte);
+        }
     }
 
     /**
