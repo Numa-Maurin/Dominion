@@ -1,7 +1,11 @@
 package fr.umontpellier.iut.dominion.cards.common;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Malédiction (Curse)
@@ -15,5 +19,11 @@ public class Curse extends Card {
 
     public int getVictoryValue(Player p) {
         return -1;
+    }
+
+    public List<CardType> getTypes() {
+        ArrayList<CardType> type = new ArrayList<>();
+        type.add(CardType.Curse);
+        return type;
     }
 }
