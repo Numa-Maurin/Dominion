@@ -126,7 +126,11 @@ public class Player {
      * défausse, la pioche et en jeu)
      */
     public ListOfCards getAllCards() {
-        throw new RuntimeException("Not Implemented");
+        ListOfCards deck = getCardsInHand();
+        deck.addAll(discard);
+        deck.addAll(draw);
+        deck.addAll(inPlay);
+        return deck;
     }
 
     /**
@@ -137,7 +141,12 @@ public class Player {
      * {@code getVictoryValue()}) des cartes
      */
     public int getVictoryPoints() {
-        throw new RuntimeException("Not Implemented");
+        ListOfCards deck = getAllCards();
+        int vp = 0;
+        for (Card carte : deck) {
+            vp += carte.getVictoryValue(this);
+        }
+        return vp;
     }
 
     /**
@@ -196,7 +205,16 @@ public class Player {
      * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawCard() {
-        throw new RuntimeException("Not Implemented");
+        if (draw.isEmpty()) {
+            discard.shuffle();
+            draw.addAll(discard);
+            discard.clear();
+        }
+        if (!draw.isEmpty()) {
+            return draw.remove(0);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -208,7 +226,9 @@ public class Player {
      * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawToHand() {
-        throw new RuntimeException("Not Implemented");
+        Card carte = drawCard();
+        addToHand(carte);
+        return carte;
     }
 
     /**
@@ -521,7 +541,21 @@ public class Player {
      * - Le joueur pioche 5 cartes en main
      */
     public void endTurn() {
-        throw new RuntimeException("Not Implemented");
+        this.numberOfActions = 0;
+        this.numberOfBuys = 0;
+        this.money = 0;
+        for (Card carte : this.inPlay) {
+            this.discard.add(carte);
+            this.inPlay.remove(carte);
+        }
+        for (Card carte : this.hand) {
+            this.discard.add(carte);
+            this.hand.remove(carte);
+        }
+        for (int i=0; i<5; i++) {
+            Card carte = this.draw.remove(0);
+            this.hand.add(carte);
+        }
     }
 
     /**
@@ -530,7 +564,9 @@ public class Player {
      * Les compteurs de nombre d'actions, de nombre d'achats et argent sont initialisés
      */
     public void startTurn() {
-        throw new RuntimeException("Not Implemented");
+        this.numberOfBuys = 1;
+        this.numberOfActions = 1;
+        this.money = 0;
     }
 
     /**
