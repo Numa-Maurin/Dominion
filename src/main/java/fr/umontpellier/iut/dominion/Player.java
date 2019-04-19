@@ -75,9 +75,7 @@ public class Player {
         for (int i = 0; i < 7; i++) {
             discard.add(new Copper());
         }
-        for (int i = 0; i < 5; i++) {
-            this.drawCard();
-        }
+        this.endTurn();
     }
 
     /**
