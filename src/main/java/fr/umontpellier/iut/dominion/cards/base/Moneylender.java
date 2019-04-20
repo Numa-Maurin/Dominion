@@ -1,6 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
  * Carte Prêteur sur gages (Moneylender)
@@ -8,7 +8,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
  * Écartez une carte Cuivre de votre main.
  * Dans ce cas, +3 Pièces.
  */
-public class Moneylender extends Card {
+public class Moneylender extends Action {
     public Moneylender() {
         super("Moneylender", 4);
     }
