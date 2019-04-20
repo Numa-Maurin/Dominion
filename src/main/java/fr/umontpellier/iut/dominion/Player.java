@@ -385,7 +385,16 @@ public class Player {
      * lieu
      */
     public Card buyCard(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        if (numberOfBuys >= 1) {
+            for (Card c : game.availableSupplyCards()) {
+                if (c.getName() == cardName && c.getCost() <= money) {
+                    money -= c.getCost();
+                    numberOfBuys--;
+                    gainFromSupply(cardName);
+                    return c;
+                }
+            }
+        } return null;
     }
 
     /**
