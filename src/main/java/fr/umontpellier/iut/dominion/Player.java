@@ -329,7 +329,7 @@ public class Player {
      */
     public void playCard(String cardName) {
         for (Card c : hand) {
-            if (c.getName()==cardName) {
+            if (c.getName()== cardName) {
                 playCard(c);
             }
         }
@@ -401,7 +401,7 @@ public class Player {
      * Ajoute une carte sur le dessus de la pioche du joueur
      */
     public void addToDraw(Card c) {
-        throw new RuntimeException("Not Implemented");
+        draw.add(0,c);
     }
 
     /**
