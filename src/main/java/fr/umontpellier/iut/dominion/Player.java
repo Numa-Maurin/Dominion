@@ -360,7 +360,14 @@ public class Player {
      * null} si aucune carte n'a été prise dans la réserve.
      */
     public Card gainFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        for (Card c : game.availableSupplyCards()) {
+            if (c.getName() == cardName) {
+                game.availableSupplyCards().remove(c);
+                discard.add(c);
+                return c;
+            }
+        }
+        return null;
     }
 
     /**
