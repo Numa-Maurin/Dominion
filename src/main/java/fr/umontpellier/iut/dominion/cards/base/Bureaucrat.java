@@ -1,6 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Attack;
 
 /**
  * Carte Bureaucrate (Bureaucrat)
@@ -9,7 +9,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
  * Tous vos adversaires dévoilent une carte Victoire et la placent sur leur deck (sinon ils dévoilent leur
  * main afin que vous puissiez voir qu'ils n'ont pas de cartes Victoire).
  */
-public class Bureaucrat extends Card {
+public class Bureaucrat extends Attack {
     public Bureaucrat() {
         super("Bureaucrat", 4);
     }

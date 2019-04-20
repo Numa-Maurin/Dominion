@@ -1,6 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
  * Carte Mine
@@ -8,7 +8,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
  * Écartez une carte Trésor de votre main. Recevez une carte Trésor coûtant jusqu'à 3 Pièces de plus ;
  * ajoutez cette carte à votre main.
  */
-public class Mine extends Card {
+public class Mine extends Action {
     public Mine() {
         super("Mine", 5);
     }

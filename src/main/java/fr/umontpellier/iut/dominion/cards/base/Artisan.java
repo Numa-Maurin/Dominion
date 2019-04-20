@@ -1,6 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
  * Carte Artisan
@@ -8,7 +8,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
  * Gagnez une carte coûtant jusqu'à 5 Pièces dans votre main.
  * Mettez une carte de votre main sur votre deck.
  */
-public class Artisan extends Card {
+public class Artisan extends Action {
     public Artisan() {
         super("Artisan", 6);
     }

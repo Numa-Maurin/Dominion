@@ -1,6 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
  * Carte Braconnier (Poacher)
@@ -10,7 +10,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
  * +1 Pièce.
  * Défaussez une carte de votre main par pile de réserve épuisée.
  */
-public class Poacher extends Card {
+public class Poacher extends Action {
     public Poacher() {
         super("Poacher", 4);
     }
