@@ -391,7 +391,7 @@ public class Player {
     public Card buyCard(String cardName) {
         if (numberOfBuys >= 1) {
             for (Card c : game.availableSupplyCards()) {
-                if (c.getName() == cardName && c.getCost() <= money) {
+                if (c.getName().equals(cardName) && c.getCost() <= money) {
                     money -= c.getCost();
                     numberOfBuys--;
                     gainFromSupply(cardName);
