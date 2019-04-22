@@ -51,7 +51,7 @@ class GameTest {
         assertEquals(2, minimalGame.otherPlayers(p).size());
     }
 
-    @Disabled
+
     @Test
     void testOtherPlayersNames() {
         Player p = minimalGame.getPlayer(1);
@@ -59,13 +59,13 @@ class GameTest {
         assertEquals("Toto", minimalGame.otherPlayers(p).get(1).getName());
     }
 
-    @Disabled
+
     @Test
     void testGetFromSupply() {
         assertEquals("Gold", minimalGame.getFromSupply("Gold").getName());
     }
 
-    @Disabled
+
     @Test
     void testGetNotInSupply() {
         assertNull(minimalGame.getFromSupply("Blop"));
