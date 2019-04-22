@@ -202,7 +202,7 @@ public class Game {
      */
     public Card getFromSupply(String cardName) {
         for (Card c : availableSupplyCards()) {
-            if (c.getName() == cardName) {
+            if (c.getName().equals(cardName)) {
                 return c;
             }
         }
@@ -217,7 +217,9 @@ public class Game {
      * ne correspond au nom passé en argument
      */
     public Card removeFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        Card c = getFromSupply(cardName);
+        supplyStacks.remove(c);
+        return c;
     }
 
     /**
