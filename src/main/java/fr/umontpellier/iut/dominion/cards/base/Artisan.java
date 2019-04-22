@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
@@ -11,5 +12,10 @@ import fr.umontpellier.iut.dominion.cards.type.Action;
 public class Artisan extends Action {
     public Artisan() {
         super("Artisan", 6);
+    }
+
+    @Override
+    public void play(Player p) {
+        super.play(p);
     }
 }

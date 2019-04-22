@@ -71,13 +71,17 @@ public class Player {
     public Player(String name, Game game) {
         this.name = name;
         this.game = game;
+        hand = new ListOfCards();
+        discard = new ListOfCards();
+        draw = new ListOfCards();
+        inPlay = new ListOfCards();
+        endTurn();
         for (int i = 0; i < 3; i++) {
             gainFromSupply("Estate");
         }
         for (int i = 0; i < 7; i++) {
             gainFromSupply("Copper");
         }
-        this.endTurn();
     }
 
     /**
