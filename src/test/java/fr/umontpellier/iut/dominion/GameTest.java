@@ -131,7 +131,7 @@ class GameTest {
         assertNull(minimalGame.removeFromSupply("Gold"));
     }
 
-    @Disabled
+
     @Test
     void testEndGame3Stack() {
         assertFalse(minimalGame.isFinished());
@@ -149,7 +149,7 @@ class GameTest {
         assertTrue(minimalGame.isFinished());
     }
 
-    @Disabled
+    
     @Test
     void testEndGameProvince() {
         for (int i = 0; i < 12; i++)
