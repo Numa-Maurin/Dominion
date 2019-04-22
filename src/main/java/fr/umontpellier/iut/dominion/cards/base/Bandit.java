@@ -25,7 +25,7 @@ public class Bandit extends Attack {
 
     @Override
     public void play(Player p) {
-        p.incrementMoney(1);
+        p.gain(new Gold());
         for (Player o : p.getGame().otherPlayers(p)) {
             Card revealCard1 = o.drawCard();
             Card revealCard2 = o.drawCard();
@@ -35,20 +35,20 @@ public class Bandit extends Attack {
                 choice.add(revealCard1);
                 choice.add(revealCard2);
                 if (o.chooseCard("Choisissez la carte à écarter", choice, false).equals(revealCard1.getName())) {
-                    p.getGame().getTrashedCards().add(revealCard1);
-                    p.discardCard(revealCard2);
+                    o.getGame().getTrashedCards().add(revealCard1);
+                    o.discardCard(revealCard2);
                 } else {
-                    p.getGame().getTrashedCards().add(revealCard2);
-                    p.discardCard(revealCard1);
+                    o.getGame().getTrashedCards().add(revealCard2);
+                    o.discardCard(revealCard1);
                 }
             }
             else if (revealCard1.getTypes().contains(Treasure) && !revealCard1.getName().equals("Copper")) {
-                p.getGame().getTrashedCards().add(revealCard1);
-                p.discardCard(revealCard2);
+                o.getGame().getTrashedCards().add(revealCard1);
+                o.discardCard(revealCard2);
             }
             else if (revealCard2.getTypes().contains(Treasure) && !revealCard2.getName().equals("Copper")) {
-                p.getGame().getTrashedCards().add(revealCard2);
-                p.discardCard(revealCard1);
+                o.getGame().getTrashedCards().add(revealCard2);
+                o.discardCard(revealCard1);
             }
             else {
                 o.discardCard(revealCard1);
