@@ -334,10 +334,8 @@ public class Player {
      * fait rien.
      */
     public void playCard(String cardName) {
-        for (Card c : hand) {
-            if (c.getName()== cardName) {
-                playCard(c);
-            }
+        if (hand.getCard(cardName) != null) {
+            playCard(hand.getCard(cardName));
         }
     }
 
