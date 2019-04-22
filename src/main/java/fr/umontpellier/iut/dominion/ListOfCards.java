@@ -53,7 +53,12 @@ public class ListOfCards extends ArrayList<Card> {
      * {@code null} sinon
      */
     public Card getCard(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        for (Card c : this) {
+            if (c.getName().equals(cardName)) {
+                return c;
+            }
+        }
+        return null;
     }
 
     /**
