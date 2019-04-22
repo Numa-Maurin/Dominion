@@ -70,10 +70,10 @@ public class Player {
      */
     public Player(String name, Game game) {
         for (int i = 0; i < 3; i++) {
-            discard.add(new Estate());
+            gainFromSupply("Estate");
         }
         for (int i = 0; i < 7; i++) {
-            discard.add(new Copper());
+            gainFromSupply("Copper");
         }
         this.endTurn();
     }
@@ -346,7 +346,7 @@ public class Player {
      */
     public void gain(Card c) {
         if (c != null) {
-            discard.add(c);
+            discardCard(c);
         }
     }
 
@@ -363,7 +363,7 @@ public class Player {
         for (Card c : game.availableSupplyCards()) {
             if (c.getName() == cardName) {
                 game.availableSupplyCards().remove(c);
-                discard.add(c);
+                discardCard(c);
                 return c;
             }
         }
