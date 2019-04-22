@@ -76,10 +76,10 @@ public class Player {
         draw = new ListOfCards();
         inPlay = new ListOfCards();
         for (int i = 0; i < 3; i++) {
-            gainFromSupply("Estate");
+            discardCard(new Estate());
         }
         for (int i = 0; i < 7; i++) {
-            gainFromSupply("Copper");
+            discardCard(new Copper());
         }
         endTurn();
     }

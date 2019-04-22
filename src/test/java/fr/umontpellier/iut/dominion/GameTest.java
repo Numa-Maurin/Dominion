@@ -86,7 +86,7 @@ class GameTest {
         assertNull(minimalGame.removeFromSupply("Blop"));
     }
 
-    @Disabled
+
     @Test
     void testNbAvailableSupplies() {
         assertEquals(7, minimalGame.availableSupplyCards().size());
@@ -96,7 +96,7 @@ class GameTest {
         assertEquals(6, minimalGame.availableSupplyCards().size());
     }
 
-    @Disabled
+
     @Test
     void testNbCardsInSupplies() {
         for (int i = 0; i < 12; i++) {
@@ -149,7 +149,7 @@ class GameTest {
         assertTrue(minimalGame.isFinished());
     }
 
-    
+
     @Test
     void testEndGameProvince() {
         for (int i = 0; i < 12; i++)
