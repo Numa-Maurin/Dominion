@@ -71,13 +71,6 @@ public class Player {
     public Player(String name, Game game) {
         this.name = name;
         this.game = game;
-        numberOfActions = 0;
-        numberOfBuys = 0;
-        money = 0;
-        hand = new ListOfCards();
-        discard = new ListOfCards();
-        draw = new ListOfCards();
-        inPlay = new ListOfCards();
         for (int i = 0; i < 3; i++) {
             gainFromSupply("Estate");
         }
@@ -582,19 +575,19 @@ public class Player {
      * - Le joueur pioche 5 cartes en main
      */
     public void endTurn() {
-        this.numberOfActions = 0;
-        this.numberOfBuys = 0;
-        this.money = 0;
-        for (Card carte : this.inPlay) {
-            this.discard.add(carte);
-            this.inPlay.remove(carte);
+        numberOfActions = 0;
+        numberOfBuys = 0;
+        money = 0;
+        for (Card carte : inPlay) {
+            discardCard(carte);
+            inPlay.remove(carte);
         }
-        for (Card carte : this.hand) {
-            this.discard.add(carte);
-            this.hand.remove(carte);
+        for (Card carte : hand) {
+            discardCard(carte);
+            hand.remove(carte);
         }
         for (int i=0; i<5; i++) {
-            this.drawToHand();
+            drawToHand();
         }
     }
 
@@ -604,9 +597,9 @@ public class Player {
      * Les compteurs de nombre d'actions, de nombre d'achats et argent sont initialisés
      */
     public void startTurn() {
-        this.numberOfBuys = 1;
-        this.numberOfActions = 1;
-        this.money = 0;
+        numberOfBuys = 1;
+        numberOfActions = 1;
+        money = 0;
     }
 
     /**
