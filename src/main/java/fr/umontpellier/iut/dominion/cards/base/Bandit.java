@@ -29,8 +29,8 @@ public class Bandit extends Attack {
         for (Player o : p.getGame().otherPlayers(p)) {
             Card revealCard1 = o.drawCard();
             Card revealCard2 = o.drawCard();
-            if ((revealCard1.getTypes().contains(Treasure) & revealCard2.getTypes().contains(Treasure)) && ((revealCard1.getName() != "Copper" &
-                revealCard2.getName() != "Copper") && revealCard1.getName() != revealCard2.getName())) {
+            if ((revealCard1.getTypes().contains(Treasure) & revealCard2.getTypes().contains(Treasure)) && ((!revealCard1.getName().equals("Copper") &
+                    !revealCard2.getName().equals("Copper")) && !revealCard1.getName().equals(revealCard2.getName()))) {
                 ListOfCards choice = new ListOfCards();
                 choice.add(revealCard1);
                 choice.add(revealCard2);
@@ -42,11 +42,11 @@ public class Bandit extends Attack {
                     p.discardCard(revealCard1);
                 }
             }
-            else if (revealCard1.getTypes().contains(Treasure) && revealCard1.getName() != "Copper") {
+            else if (revealCard1.getTypes().contains(Treasure) && !revealCard1.getName().equals("Copper")) {
                 p.getGame().getTrashedCards().add(revealCard1);
                 p.discardCard(revealCard2);
             }
-            else if (revealCard2.getTypes().contains(Treasure) && revealCard2.getName() != "Copper") {
+            else if (revealCard2.getTypes().contains(Treasure) && !revealCard2.getName().equals("Copper")) {
                 p.getGame().getTrashedCards().add(revealCard2);
                 p.discardCard(revealCard1);
             }
