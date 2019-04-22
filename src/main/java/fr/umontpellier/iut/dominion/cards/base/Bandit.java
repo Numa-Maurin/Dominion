@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Game;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.type.Attack;
 
@@ -14,12 +15,14 @@ public class Bandit extends Attack {
         super("Bandit", 5);
     }
 
-  /*  @Override
+    @Override
     public void play(Player p) {
        p.incrementMoney(1);
-        for (Player p: ) {
-
+        for (Player o : p.getGame().otherPlayers(p)) {
+            for (int i = 0; i < 2; i++) {
+                o.drawCard();
+            }
         }
 
-    }*/
+    }
 }
