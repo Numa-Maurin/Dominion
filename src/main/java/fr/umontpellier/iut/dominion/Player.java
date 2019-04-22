@@ -75,13 +75,13 @@ public class Player {
         discard = new ListOfCards();
         draw = new ListOfCards();
         inPlay = new ListOfCards();
-        endTurn();
         for (int i = 0; i < 3; i++) {
             gainFromSupply("Estate");
         }
         for (int i = 0; i < 7; i++) {
             gainFromSupply("Copper");
         }
+        endTurn();
     }
 
     /**
@@ -335,7 +335,7 @@ public class Player {
      */
     public void playCard(String cardName) {
         for (Card c : hand) {
-            if (c.getName()== cardName) {
+            if (c.getName().equals(cardName)) {
                 playCard(c);
             }
         }

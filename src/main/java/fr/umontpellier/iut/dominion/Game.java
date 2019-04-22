@@ -212,12 +212,7 @@ public class Game {
      * ne correspond
      */
     public Card getFromSupply(String cardName) {
-        for (Card c : availableSupplyCards()) {
-            if (c.getName().equals(cardName)) {
-                return c;
-            }
-        }
-        return null;
+        return availableSupplyCards().getCard(cardName);
     }
 
     /**
@@ -228,9 +223,12 @@ public class Game {
      * ne correspond au nom passé en argument
      */
     public Card removeFromSupply(String cardName) {
-        Card c = getFromSupply(cardName);
-        supplyStacks.remove(c);
-        return c;
+        for (ListOfCards l : supplyStacks) {
+            if (l.getCard(cardName) != null) {
+                return l.remove(cardName);
+            }
+        }
+        return null;
     }
 
     /**

@@ -71,7 +71,7 @@ class GameTest {
         assertNull(minimalGame.getFromSupply("Blop"));
     }
 
-    @Disabled
+
     @Test
     void testRemoveFromSupply() {
         for (int i = 0; i < 12; i++)
@@ -80,7 +80,7 @@ class GameTest {
         assertNull(minimalGame.removeFromSupply("Duchy"));
     }
 
-    @Disabled
+
     @Test
     void testRemoveNotInSupply() {
         assertNull(minimalGame.removeFromSupply("Blop"));
