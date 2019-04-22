@@ -71,9 +71,6 @@ public class Player {
     public Player(String name, Game game) {
         this.name = name;
         this.game = game;
-        numberOfActions = 0;
-        numberOfBuys = 0;
-        money = 0;
         hand = new ListOfCards();
         discard = new ListOfCards();
         draw = new ListOfCards();
