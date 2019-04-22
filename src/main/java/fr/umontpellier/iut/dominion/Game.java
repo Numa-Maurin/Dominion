@@ -119,7 +119,14 @@ public class Game {
      * premier).
      */
     public List<Player> otherPlayers(Player p) {
-        throw new RuntimeException("Not Implemented");
+        ArrayList<Player> others = new ArrayList<>();
+        for (int i=indexOfPlayer(p)+1; i<getNumberOfPlayers(); i++) {
+            others.add(players.get(i));
+        }
+        for (int i=0; i<indexOfPlayer(p); i++) {
+            others.add(players.get(i));
+        }
+        return others;
     }
 
     /**
@@ -130,7 +137,11 @@ public class Game {
      * non-vide de la réserve (cartes royaume et cartes communes)
      */
     public ListOfCards availableSupplyCards() {
-        throw new RuntimeException("Not Implemented");
+        ListOfCards cartesDisponibles = new ListOfCards();
+        for (ListOfCards l : supplyStacks) {
+            cartesDisponibles.add(l.get(0));
+        }
+        return cartesDisponibles;
     }
 
     /**
@@ -201,7 +212,12 @@ public class Game {
      * ne correspond
      */
     public Card getFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        for (Card c : availableSupplyCards()) {
+            if (c.getName().equals(cardName)) {
+                return c;
+            }
+        }
+        return null;
     }
 
     /**
@@ -212,7 +228,9 @@ public class Game {
      * ne correspond au nom passé en argument
      */
     public Card removeFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        Card c = getFromSupply(cardName);
+        supplyStacks.remove(c);
+        return c;
     }
 
     /**

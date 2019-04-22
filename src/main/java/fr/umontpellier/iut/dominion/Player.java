@@ -69,11 +69,20 @@ public class Player {
      * préparer la main du joueur après avoir placé les cartes dans la défausse.
      */
     public Player(String name, Game game) {
+        this.name = name;
+        this.game = game;
+        numberOfActions = 0;
+        numberOfBuys = 0;
+        money = 0;
+        hand = new ListOfCards();
+        discard = new ListOfCards();
+        draw = new ListOfCards();
+        inPlay = new ListOfCards();
         for (int i = 0; i < 3; i++) {
-            discard.add(new Estate());
+            gainFromSupply("Estate");
         }
         for (int i = 0; i < 7; i++) {
-            discard.add(new Copper());
+            gainFromSupply("Copper");
         }
         this.endTurn();
     }
@@ -346,7 +355,7 @@ public class Player {
      */
     public void gain(Card c) {
         if (c != null) {
-            discard.add(c);
+            discardCard(c);
         }
     }
 
@@ -361,9 +370,9 @@ public class Player {
      */
     public Card gainFromSupply(String cardName) {
         for (Card c : game.availableSupplyCards()) {
-            if (c.getName() == cardName) {
-                game.availableSupplyCards().remove(c);
-                discard.add(c);
+            if (c.getName().equals(cardName)) {
+                game.removeFromSupply(c.getName());
+                discardCard(c);
                 return c;
             }
         }
