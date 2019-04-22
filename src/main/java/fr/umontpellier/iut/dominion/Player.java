@@ -75,13 +75,13 @@ public class Player {
         discard = new ListOfCards();
         draw = new ListOfCards();
         inPlay = new ListOfCards();
-        endTurn();
         for (int i = 0; i < 3; i++) {
             gainFromSupply("Estate");
         }
         for (int i = 0; i < 7; i++) {
             gainFromSupply("Copper");
         }
+        endTurn();
     }
 
     /**

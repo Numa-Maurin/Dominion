@@ -13,9 +13,4 @@ public class Artisan extends Action {
     public Artisan() {
         super("Artisan", 6);
     }
-
-    @Override
-    public void play(Player p) {
-        super.play(p);
-    }
 }
