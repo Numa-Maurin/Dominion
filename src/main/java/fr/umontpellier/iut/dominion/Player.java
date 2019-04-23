@@ -263,6 +263,16 @@ public class Player {
     }
 
     /**
+     * Défausse une carte de la main
+     *
+     * La carte est ajoutée à la pile de défausse du joueur. La carte est retirée de la main du joueur
+     */
+    public void discardHandCard(Card c) {
+        hand.remove(c);
+        discardCard(c);
+    }
+
+    /**
      * Renvoie une représentation de l'état du joueur sous forme d'une chaîne
      * de caractères.
      *

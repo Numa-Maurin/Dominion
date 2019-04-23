@@ -43,7 +43,7 @@ class CardsTest2 {
         p2 = game.getPlayer(2);
     }
 
-    @Disabled
+
     @Test
     void testCellar() {
         p2.getHand().add(new Cellar());
