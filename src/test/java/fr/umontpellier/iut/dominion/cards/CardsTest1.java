@@ -92,7 +92,7 @@ class CardsTest1 {
         assertEquals(7, player.getVictoryPoints());  // le joueur a 21 cartes (2 Gardens)
     }
 
-    @Disabled
+
     @Test
     void testSmithy() {
         player.getHand().add(new Smithy());
