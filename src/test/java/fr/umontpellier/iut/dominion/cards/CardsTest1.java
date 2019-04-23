@@ -101,7 +101,7 @@ class CardsTest1 {
         assertEquals(2, player.getDraw().size());
     }
 
-    @Disabled
+
     @Test
     void testFestival() {
         player.getHand().add(new Festival());
