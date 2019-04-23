@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
@@ -13,5 +14,13 @@ import fr.umontpellier.iut.dominion.cards.type.Action;
 public class Market extends Action {
     public Market() {
         super("Market", 5);
+    }
+
+    @Override
+    public void play(Player p) {
+        p.drawToHand();
+        p.incrementActions(1);
+        p.incrementBuys(1);
+        p.incrementMoney(1);
     }
 }

@@ -121,7 +121,7 @@ class CardsTest1 {
         assertEquals(1, player.getNumberOfActions());
     }
 
-    @Disabled
+
     @Test
     void testMarket() {
         player.getHand().add(new Market());
