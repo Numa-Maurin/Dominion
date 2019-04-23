@@ -18,11 +18,7 @@ public class Moat extends Reaction {
 
     @Override
     public void play(Player p) {
-        for (int i = 0; i < 2; i++) {
-            p.drawToHand();
-        }
-        for (Player o : p.getOtherPlayers()) {
-            
-        }
+        p.drawToHand();
+        p.drawToHand();
     }
 }
