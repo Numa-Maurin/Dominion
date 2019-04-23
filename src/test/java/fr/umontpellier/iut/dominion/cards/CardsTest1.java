@@ -112,7 +112,7 @@ class CardsTest1 {
         assertEquals(5, player.getHand().size());
     }
 
-    @Disabled
+
     @Test
     void testLaboratory() {
         player.getHand().add(new Laboratory());
