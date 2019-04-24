@@ -26,10 +26,10 @@ public class Library extends Action {
     @Override
     public void play(Player p) {
         ListOfCards side = new ListOfCards();
+        List<String> choices = Arrays.asList("y", "n");
         while (p.getHand().size() < 7) {
             Card drewCard = p.drawCard();
             if (drewCard.getTypes().contains(Action)) {
-                List<String> choices = Arrays.asList("y", "n");
                 String scan = p.chooseOption("Voulez-vous mettre cette carte de côté ?", choices, false);
                 if (scan.equals("y")) {
                     side.add(drewCard);

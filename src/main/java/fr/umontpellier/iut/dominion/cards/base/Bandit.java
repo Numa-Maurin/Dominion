@@ -24,7 +24,7 @@ public class Bandit extends Attack {
     @Override
     public void play(Player p) {
         p.gain(new Gold());
-        for (Player o : p.getOtherPlayers()) {
+        for (Player o : p.getNonReactingPlayers()) {
             Card revealCard1 = o.drawCard();
             Card revealCard2 = o.drawCard();
             if ((revealCard1.getTypes().contains(Treasure) & revealCard2.getTypes().contains(Treasure)) && ((!revealCard1.getName().equals("Copper") &
