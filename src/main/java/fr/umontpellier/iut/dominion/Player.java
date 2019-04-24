@@ -274,7 +274,6 @@ public class Player {
 
     /**
      * Retourne la liste des autres joueurs n'ayant pas Moat dans leur main ou ne voulant pas la jouer
-     * ou null si il n'y en a aucun
      */
     public List<Player> getNonReactingPlayers() {
         List<String> choices = Arrays.asList("y","n");
@@ -287,9 +286,6 @@ public class Player {
                     NoReaction.add(p);
                 }
             }
-        }
-        if (NoReaction.isEmpty()) {
-            return null;
         }
         return NoReaction;
     }
