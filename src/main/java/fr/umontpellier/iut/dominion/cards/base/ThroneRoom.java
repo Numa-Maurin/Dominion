@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
@@ -11,5 +12,12 @@ import fr.umontpellier.iut.dominion.cards.type.Action;
 public class ThroneRoom extends Action {
     public ThroneRoom() {
         super("Throne Room", 4);
+    }
+
+    @Override
+    public void play(Player p) {
+        String cardName = p.chooseCard("Choose an Action cards to play twice.",p.getCardsInHand(), false);
+        p.getCardsInHand().getCard(cardName).play(p);
+        p.playCard(cardName);
     }
 }
