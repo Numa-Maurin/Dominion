@@ -273,6 +273,28 @@ public class Player {
     }
 
     /**
+     * Retourne la liste des autres joueurs n'ayant pas Moat dans leur main ou ne voulant pas la jouer
+     * ou null si il n'y en a aucun
+     */
+    public List<Player> getNonReactingPlayers() {
+        List<String> choices = Arrays.asList("y","n");
+        ArrayList<Player> NoReaction = new ArrayList<>();
+        for (Player p : getGame().otherPlayers(this)) {
+            if (p.getHand().getCard("Moat") == null) {
+                NoReaction.add(p);
+            } else {
+                if (p.chooseOption("Do you want to use Moat ?", choices, false).equals("n")) {
+                    NoReaction.add(p);
+                }
+            }
+        }
+        if (NoReaction.isEmpty()) {
+            return null;
+        }
+        return NoReaction;
+    }
+
+    /**
      * Renvoie une représentation de l'état du joueur sous forme d'une chaîne
      * de caractères.
      *
