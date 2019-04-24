@@ -73,7 +73,7 @@ class CardsTest3 {
         assertEquals(7, p1.getHand().size());
     }
 
-    @Disabled
+
     @Test
     void testLibrary() {
         p1.getDraw().clear();
