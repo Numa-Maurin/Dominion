@@ -1,14 +1,12 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.Game;
+
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Gold;
-import fr.umontpellier.iut.dominion.cards.common.Silver;
 import fr.umontpellier.iut.dominion.cards.type.Attack;
 
-import java.util.ArrayList;
 
 import static fr.umontpellier.iut.dominion.CardType.Treasure;
 
