@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
+
 /**
  * Carte Chapelle (Chapel)
  *
@@ -14,18 +15,18 @@ public class Chapel extends Action {
     }
 
     @Override
-    public void play(Player p){
+    public void play(Player p) {
         int i = 0;
         boolean ecarter = true;
-        while(i<4 || ecarter){
-            String car = p.chooseCard("Quelle carte souhaitez vous détruire?", p.getCardsInHand(), true);
-            if ( car != ""){
-                p.getGame().getTrashedCards().add(p.getCardsInHand().getCard(car));
-                p.discardCard(p.getCardsInHand().getCard(car));
-                i++;
-            } else {
-                ecarter = false;
+            while (i < 4 && ecarter) {
+                String car = p.chooseCard("Quelle carte souhaitez vous détruire?", p.getCardsInHand(), true);
+                if (!car.equals("")) {
+                    p.getGame().getTrashedCards().add(p.getCardsInHand().getCard(car));
+                    p.getCardsInHand().remove(p.getCardsInHand().getCard(car));
+                    i++;
+                } else {
+                    ecarter = false;
+                }
             }
         }
     }
-}
