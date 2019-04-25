@@ -13,6 +13,7 @@ public class Chapel extends Action {
         super("Chapel", 2);
     }
 
+    @Override
     public void play(Player p){
         int i = 0;
         boolean ecarter = true;
