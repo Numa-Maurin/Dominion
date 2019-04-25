@@ -1,7 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 import java.util.ArrayList;
@@ -23,18 +22,10 @@ public class Harbinger extends Action {
     public void play(Player p) {
         p.incrementActions(1);
         p.drawToHand();
-        List<String> choices = new ArrayList<>();
-        for (Card c : p.getDiscard()) {
-            choices.add(c.getName());
+        String cardName = p.chooseOption("Choose ", p.getCardsNamesInDiscard(), true);
+        if (!cardName.equals("")) {
+            p.addToDraw(p.getDiscard().getCard(cardName));
+            p.getDiscard().remove();
         }
-        String scan = p.chooseOption("Quelle carte voulez-vous rajouter sur votre deck ?", choices, true);
-        if (scan.equals(""));
-        else {
-            p.addToDraw(p.getDiscard().getCard(scan));
-            p.getDiscard().remove(scan);
-        }
-
-
-
     }
 }

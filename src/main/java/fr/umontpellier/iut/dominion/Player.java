@@ -135,6 +135,26 @@ public class Player {
     }
 
     /**
+     * Renvoie une liste des cartes que le joueur a dans sa défausse.
+     * La liste renvoyée est une nouvelle {@code ListOfCards} dont les
+     * éléments sont les mêmes que ceux de {@code discard}.
+     */
+    public ListOfCards getCardsInDiscard() {
+        return new ListOfCards(discard);
+    }
+
+    /**
+     * Renvoie une liste des noms des cartes que le joueur a dans sa défausse.
+     */
+    public List<String> getCardsNamesInDiscard() {
+        ArrayList<String> noms = new ArrayList<>();
+        for (Card c : getCardsInDiscard()) {
+            noms.add(c.getName());
+        }
+        return noms;
+    }
+
+    /**
      * Renvoie une liste de toutes les cartes possédées par le joueur
      * (le deck complet c'est-à-dire toutes les cartes dans la main, la
      * défausse, la pioche et en jeu)
@@ -229,6 +249,10 @@ public class Player {
         } else {
             return null;
         }
+    }
+
+    public Card drawDiscardCard(String cardName) {
+        return discard.remove();
     }
 
     /**
