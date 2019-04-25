@@ -13,4 +13,5 @@ public class Bureaucrat extends Attack {
     public Bureaucrat() {
         super("Bureaucrat", 4);
     }
+
 }
