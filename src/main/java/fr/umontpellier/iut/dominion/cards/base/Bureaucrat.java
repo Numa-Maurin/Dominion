@@ -1,5 +1,4 @@
 package fr.umontpellier.iut.dominion.cards.base;
-
 import fr.umontpellier.iut.dominion.cards.type.Attack;
 
 /**
@@ -13,5 +12,4 @@ public class Bureaucrat extends Attack {
     public Bureaucrat() {
         super("Bureaucrat", 4);
     }
-
 }
