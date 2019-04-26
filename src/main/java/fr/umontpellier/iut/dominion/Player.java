@@ -145,6 +145,15 @@ public class Player {
     }
 
     /**
+     * Renvoie une liste des cartes que le joueur a en jeu.
+     * La liste renvoyée est une nouvelle {@code ListOfCards} dont les
+     * éléments sont les mêmes que ceux de {@code inPlay}.
+     */
+    public ListOfCards getCardsInPlay() {
+        return new ListOfCards(inPlay);
+    }
+
+    /**
      * Renvoie une liste des noms des cartes que le joueur a dans sa défausse.
      */
     public List<String> getCardsNamesInDiscard() {
@@ -647,11 +656,11 @@ public class Player {
         numberOfActions = 0;
         numberOfBuys = 0;
         money = 0;
-        for (Card carte : inPlay) {
+        for (Card carte : getCardsInPlay()) {
             discardCard(carte);
             inPlay.remove(carte);
         }
-        for (Card carte : hand) {
+        for (Card carte : getCardsInHand()) {
             discardCard(carte);
             hand.remove(carte);
         }
@@ -719,7 +728,7 @@ public class Player {
         }
 
         // 3. (Trésor)
-        for (Card c : hand){
+        for (Card c : getCardsInHand()){
             if (c.getTypes().contains(CardType.Treasure))
                 playCard(c);
         }
