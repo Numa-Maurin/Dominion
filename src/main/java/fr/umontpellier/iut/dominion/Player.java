@@ -252,8 +252,15 @@ public class Player {
         }
     }
 
+    /**
+     * Pioche une carte de la défausse nommée cardName
+     *
+     * Retourne null si cette carte n'est pas dans la défausse
+     */
     public Card drawDiscardCard(String cardName) {
-        return discard.remove();
+        Card carte = discard.getCard(cardName);
+        discard.remove(carte);
+        return carte;
     }
 
     /**
@@ -275,6 +282,13 @@ public class Player {
      */
     public void addToHand(Card c) {
         hand.add(c);
+    }
+
+    /**
+     * Ajoute une carte sur le dessus de la pioche du joueur
+     */
+    public void addToDraw(Card c) {
+        draw.add(0,c);
     }
 
     /**
@@ -452,13 +466,6 @@ public class Player {
                 }
             }
         } return null;
-    }
-
-    /**
-     * Ajoute une carte sur le dessus de la pioche du joueur
-     */
-    public void addToDraw(Card c) {
-        draw.add(0,c);
     }
 
     /**

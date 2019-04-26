@@ -24,8 +24,7 @@ public class Harbinger extends Action {
         p.drawToHand();
         String cardName = p.chooseOption("Choose ", p.getCardsNamesInDiscard(), true);
         if (!cardName.equals("")) {
-            p.addToDraw(p.getDiscard().getCard(cardName));
-            p.getDiscard().remove();
+            p.addToDraw(p.drawDiscardCard(cardName));
         }
     }
 }
