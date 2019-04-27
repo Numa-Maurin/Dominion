@@ -333,4 +333,12 @@ public class Game {
     public String readLine() {
         return scanner.nextLine();
     }
+    
+    /**
+     * écarter une carte
+     */
+    public void trash(Card c){
+
+        trashedCards.add(c);
+    }
 }
