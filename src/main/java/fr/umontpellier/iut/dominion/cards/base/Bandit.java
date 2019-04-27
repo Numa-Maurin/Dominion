@@ -23,7 +23,7 @@ public class Bandit extends Attack {
 
     @Override
     public void play(Player p) {
-        p.gain(new Gold());
+        p.gainFromSupply("Gold");
         for (Player o : p.getNonReactingPlayers()) {
             Card revealCard1 = o.drawCard();
             Card revealCard2 = o.drawCard();
@@ -33,7 +33,7 @@ public class Bandit extends Attack {
                 choice.add(revealCard1);
                 choice.add(revealCard2);
                 if (o.chooseCard("Choisissez la carte à écarter", choice, false).equals(revealCard1.getName())) {
-                    o.getGame().getTrashedCards().add(revealCard1);
+                    o.getGame(). getTrashedCards().add(revealCard1);
                     o.discardCard(revealCard2);
                 } else {
                     o.getGame().getTrashedCards().add(revealCard2);
