@@ -1,6 +1,8 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
+import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
@@ -14,17 +16,18 @@ public class Workshop extends Action {
     }
 
     public void play(Player p) {
-        boolean pasvalide = true;
-
-        while (pasvalide ) {
-
-            String answer= p.chooseCard("Choisissez une carte coutant jusqu'� 4 pi�ces", p.getGame().availableSupplyCards(), false);
-            if(p.getGame().getFromSupply(answer).getCost()>4) {
-                pasvalide=true;
+        ListOfCards cartesDeMoinsDeQuatre = p.getGame().availableSupplyCards();
+        for (Card c : new ListOfCards(cartesDeMoinsDeQuatre)) {
+            if (c.getCost()>4) {
+                cartesDeMoinsDeQuatre.remove(c);
             }
-            else {
-                p.discardCard(p.getGame().getFromSupply(answer));
-                p.getGame().removeFromSupply(answer);
+        }
+        boolean pasvalide = !cartesDeMoinsDeQuatre.isEmpty();
+
+        while (pasvalide) {
+            String answer = p.chooseCard("Choisissez une carte coutant jusqu'a 4 pieces", cartesDeMoinsDeQuatre, false);
+            if(cartesDeMoinsDeQuatre.getCard(answer).getCost()<=4) {
+                p.discardCard(p.getGame().removeFromSupply(answer));
                 pasvalide=false;
             }
         }
