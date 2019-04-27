@@ -59,8 +59,7 @@ class CardsTest2 {
         assertEquals(3, p2.getDraw().size());
         assertNull(p2.getHand().getCard("Duchy"));
     }
-
-    @Disabled
+    
     @Test
     void testChapel() {
         p2.getHand().add(new Chapel());
