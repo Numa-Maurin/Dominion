@@ -762,4 +762,10 @@ public class Player {
         inPlay.clear();
         discard.clear();
     }
+    /**
+     * écarter une carte de la main
+     */
+    public Card removeFromHand(String CardName) {
+       return this.hand.remove(CardName);
+    }
 }

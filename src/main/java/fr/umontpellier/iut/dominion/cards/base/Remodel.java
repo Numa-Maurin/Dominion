@@ -22,10 +22,9 @@ public class Remodel extends Action {
             choices.add(c);
         }
         String carteEcartee = p.chooseCard("Choisissez une carte à écarter", choices, false);
-        Card anw= p.getCardsInHand().getCard(carteEcartee);
-        p.getGame().trash(anw);
+        p.getGame().trash(p.removeFromHand(carteEcartee));
 
-        int prixecartee= anw.getCost()+2;
+        int prixecartee= p.getGame().getFromSupply(carteEcartee).getCost()+2;
         boolean pasvalide = true;
 
         while (pasvalide ) {

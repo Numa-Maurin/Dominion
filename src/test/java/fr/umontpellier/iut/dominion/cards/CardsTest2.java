@@ -165,7 +165,7 @@ class CardsTest2 {
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
     }
 
-    @Disabled
+
     @Test
     void testRemodel() {
         p2.getHand().add(new Remodel());
