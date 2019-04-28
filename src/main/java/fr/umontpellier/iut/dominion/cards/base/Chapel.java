@@ -19,7 +19,7 @@ public class Chapel extends Action {
         int i = 0;
         boolean ecarter = true;
             while (i < 4 && ecarter) {
-                String car = p.chooseCard("Quelle carte souhaitez vous détruire?", p.getCardsInHand(), true);
+                String car = p.chooseCard("Quelle carte souhaitez vous jeter ?", p.getCardsInHand(), true);
                 if (!car.equals("")) {
                     p.getGame().trash(p.removeFromHand(car));
                     i++;

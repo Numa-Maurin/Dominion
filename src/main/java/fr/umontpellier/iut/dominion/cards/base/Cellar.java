@@ -18,14 +18,14 @@ public class Cellar extends Action {
     @Override
     public void play(Player p) {
         p.incrementActions(1);
-        String cardName = p.chooseCard("Choose an Action cards to discard.",p.getCardsInHand(), true);
+        String cardName = p.chooseCard("Choose a card to discard.",p.getCardsInHand(), true);
         int nbCartesDefausses = 0;
         while (cardName != "") {
             if (p.getCardsInHand().getCard(cardName) != null) {
                 p.discardHandCard(p.getCardsInHand().getCard(cardName));
                 nbCartesDefausses++;
             }
-            cardName = p.chooseCard("Choose an Action cards to discard.", p.getCardsInHand(), true);
+            cardName = p.chooseCard("Choose a card to discard.", p.getCardsInHand(), true);
         }
         for (int i=0; i<nbCartesDefausses; ++i) {
             p.drawToHand();

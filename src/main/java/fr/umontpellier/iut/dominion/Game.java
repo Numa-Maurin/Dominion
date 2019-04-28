@@ -338,7 +338,6 @@ public class Game {
      * écarter une carte
      */
     public void trash(Card c){
-
         trashedCards.add(c);
     }
 }
