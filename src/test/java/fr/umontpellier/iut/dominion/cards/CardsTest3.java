@@ -162,7 +162,6 @@ class CardsTest3 {
         assertEquals(5, p1.getMoney());
     }
 
-    @Disabled
     @Test
     void testSentryTrash1Discard1() {
         p1.getHand().add(new Sentry());
@@ -184,7 +183,6 @@ class CardsTest3 {
         assertTrue(p1.getDiscard().contains(silver));
     }
 
-    @Disabled
     @Test
     void testSentryPassTwice() {
         p1.getHand().add(new Sentry());
