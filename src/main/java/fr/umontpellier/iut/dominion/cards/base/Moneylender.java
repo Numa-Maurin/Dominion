@@ -18,7 +18,7 @@ public class Moneylender extends Action {
     public void play(Player p){
         for (Card c:p.getCardsInHand()){
             if (c.getName().equals("Copper")){
-                p.removeFromHand(c.getName());
+                p.getGame().trash(p.removeFromHand(c.getName()));
                 p.incrementMoney(3);
             }
         }
