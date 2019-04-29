@@ -25,14 +25,10 @@ public class Sentry extends Action {
     public void play(Player p) {
         p.incrementActions(1);
         p.drawToHand();
-        Card cartepiochee1 = p.drawCard();
-        Card cartepiochee2 = p.drawCard();
-        System.out.println(cartepiochee1.getName().toString());
-        System.out.println(cartepiochee2.getName().toString());
+        Card cartepioche1 = p.drawCard();
+        Card cartepioche2 = p.drawCard();
 
-    }
-
-
+        System.out.println("les deux premieres cartes de la pioches sont :"+cartepioche1.getName().toString()+cartepioche2.getName().toString());
 
     }
 }
