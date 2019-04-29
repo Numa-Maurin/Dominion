@@ -36,7 +36,38 @@ public class Sentry extends Action {
         cartepioche.add(cartepioche1);
         cartepioche.add(cartepioche2);
         System.out.println("les deux premieres cartes de la pioches sont :"+cartepioche.toString());
-        String answer = p.chooseCard("Choisissez une premiere carte a defausser",cartepioche, true);
+        for (int i = 0; i < 2; i++) {
+            String carteAEcarter = p.chooseCard("Choisissez une carte a ecarter",cartepioche, true);
+            if (carteAEcarter==cartepioche1.toString()) {
+                p.getGame().trash(cartepioche1);
+                cartepioche.remove(cartepioche1);
+            }
+            else if (carteAEcarter==cartepioche2.toString()){
+                p.getGame().trash(cartepioche2);
+                cartepioche.remove(cartepioche2);
+            }
+        }
+        for (int i = 0; i < 2; i++) {
+            String carteADefauss = p.chooseCard("Choisissez une carte a defausser",cartepioche, true);
+            if (carteADefauss==cartepioche1.toString()) {
+                p.discardCard(cartepioche1);
+                cartepioche.remove(cartepioche1);
+            }
+            else if (carteADefauss==cartepioche2.toString()){
+                p.discardCard(cartepioche2);
+                cartepioche.remove(cartepioche2);
+            }
+        }
+        for (int i = 0; i < 2; i++) {
+            String carteAReplacer = p.chooseCard("Choisissez une carte a remettre dans la pioche", cartepioche, false);
+            if (carteAReplacer==cartepioche1.toString()) {
+            }
+            else if (carteAReplacer==cartepioche2.toString()){
+            }
+        }
+
+
+
 
     }
 }
