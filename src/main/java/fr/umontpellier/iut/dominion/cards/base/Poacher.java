@@ -1,5 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Player;
+import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
@@ -13,5 +15,21 @@ import fr.umontpellier.iut.dominion.cards.type.Action;
 public class Poacher extends Action {
     public Poacher() {
         super("Poacher", 4);
+    }
+
+    @Override
+    public void play(Player p) {
+        p.incrementActions(1);
+        p.drawToHand();
+        p.incrementMoney(1);
+        int nbrCarteADeffausser =17-(p.getGame().availableSupplyCards().size());
+        /*
+        17 est le nombre total de pile en debut de jeu (cartes communes + royaumes)
+        (p.getGame().availableSupplyCards().size()) est le nbr de piles non vides
+        */
+        for (int i = 0; i < nbrCarteADeffausser; i++) {
+            String answer = p.chooseCard("Choisissez une carte a defausser", p.getCardsInHand(), false);
+            p.discardCard(p.removeFromHand(answer));
+        }
     }
 }
