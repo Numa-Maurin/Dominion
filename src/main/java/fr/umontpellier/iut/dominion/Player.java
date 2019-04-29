@@ -56,9 +56,6 @@ public class Player {
      */
     private ListOfCards inPlay;
 
-    private boolean reacts;
-
-
     /**
      * Constructeur
      *
@@ -109,17 +106,6 @@ public class Player {
 
     public Game getGame() {
         return game;
-    }
-
-    /**
-     * Getters et setters pour l'attribut reacts rajouté
-     */
-    public boolean getReact() {
-        return this.reacts;
-    }
-
-    public void setReact(boolean reaction) {
-        this.reacts = reaction;
     }
 
     // Les méthodes getHand, getDiscard, getDraw et getInPlay servent uniquement pour les tests.
@@ -783,13 +769,4 @@ public class Player {
     public Card removeFromHand(String CardName) {
         return hand.remove(CardName);
     }
-
-    /**
-     * écarter une carte de la main et la place dans la défausse
-     */
-    public void removeCardHand(Card ca) {
-        Card retiree = this.hand.remove(ca.getName());
-        discard.add(retiree);
-    }
-
 }
