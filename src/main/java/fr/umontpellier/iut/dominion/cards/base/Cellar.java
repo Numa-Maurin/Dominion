@@ -20,7 +20,7 @@ public class Cellar extends Action {
         p.incrementActions(1);
         String cardName = p.chooseCard("Choose a card to discard.",p.getCardsInHand(), true);
         int nbCartesDefausses = 0;
-        while (cardName != "") {
+        while (!cardName.equals("")) {
             if (p.getCardsInHand().getCard(cardName) != null) {
                 p.discardHandCard(p.getCardsInHand().getCard(cardName));
                 nbCartesDefausses++;
