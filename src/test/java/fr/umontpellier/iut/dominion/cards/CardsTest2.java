@@ -59,7 +59,7 @@ class CardsTest2 {
         assertEquals(3, p2.getDraw().size());
         assertNull(p2.getHand().getCard("Duchy"));
     }
-    
+
     @Test
     void testChapel() {
         p2.getHand().add(new Chapel());
@@ -106,7 +106,7 @@ class CardsTest2 {
         assertEquals(3, p2.getHand().size());            // p0 a toujours les mêmes cartes en main
     }
 
-    @Disabled
+
     @Test
     void testMilitia() {
         p0.getHand().clear();
