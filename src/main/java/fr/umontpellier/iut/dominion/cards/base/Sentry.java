@@ -1,8 +1,13 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Sentinelle (Sentry)
@@ -27,8 +32,12 @@ public class Sentry extends Action {
         p.drawToHand();
         Card cartepioche1 = p.drawCard();
         Card cartepioche2 = p.drawCard();
+        ListOfCards cartepioche= new ListOfCards();
+        cartepioche.add(cartepioche1);
+        cartepioche.add(cartepioche2);
+        System.out.println("les deux premieres cartes de la pioches sont :"+cartepioche.toString());
+        String answer = p.chooseCard("Choisissez une premiere carte a defausser",cartepioche, true);
 
-        System.out.println("les deux premieres cartes de la pioches sont :"+cartepioche1.getName().toString()+cartepioche2.getName().toString());
 
     }
 }
