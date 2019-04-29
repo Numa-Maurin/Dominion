@@ -38,6 +38,5 @@ public class Sentry extends Action {
         System.out.println("les deux premieres cartes de la pioches sont :"+cartepioche.toString());
         String answer = p.chooseCard("Choisissez une premiere carte a defausser",cartepioche, true);
 
-
     }
 }
