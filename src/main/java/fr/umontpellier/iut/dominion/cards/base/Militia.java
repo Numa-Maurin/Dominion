@@ -4,6 +4,8 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.type.Attack;
 import fr.umontpellier.iut.dominion.cards.Card;
 
+import java.util.ArrayList;
+
 
 /**
  * Carte Milice (Militia)
@@ -16,16 +18,27 @@ public class Militia extends Attack {
         super("Militia", 4);
     }
 
+    @Override
     public void play(Player p) {
+
         p.incrementMoney(2);
 
         for (Player o : p.getOtherPlayers()) {
+            boolean reaction = o.getReact();
 
-            while (o.getCardsInHand().size() > 3) {
-                String cardchoose = p.chooseCard("Choisissez une carte dans votre main à défaussez", p.getCardsInHand(), false);
-                Card c = p.getCardsInHand().getCard(cardchoose);
-                p.discardCard(c);
+            if (reaction == false) {
+                if (o.getCardsInHand().size() > 3) {
+                    while (o.getCardsInHand().size() > 3) {
+                        String answer = o.chooseCard("Choisissez une carte dans votre main à défausser", o.getCardsInHand(), false);
+                        Card cardchoose=o.getCardsInHand().getCard(answer);
+                        o.removeCardHand(cardchoose);
+
                     }
                 }
+            }
+            else {
+                o.setReact(false);
+            }
         }
     }
+}

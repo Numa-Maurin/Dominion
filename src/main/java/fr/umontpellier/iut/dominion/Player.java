@@ -778,9 +778,18 @@ public class Player {
     }
 
     /**
-     * écarter une carte de la main
+     * écarter une carte de la main dont le nom est placé en argument
      */
     public Card removeFromHand(String CardName) {
         return hand.remove(CardName);
     }
+
+    /**
+     * écarter une carte de la main et la place dans la défausse
+     */
+    public void removeCardHand(Card ca) {
+        Card retiree = this.hand.remove(ca.getName());
+        discard.add(retiree);
+    }
+
 }
