@@ -57,9 +57,12 @@ public class Sentry extends Action {
                 p.discardCard(cartepioche2);
                 cartepioche.remove(cartepioche2);
             }
+            else if (carteADefauss.equals("")){
+                break;
+            }
         }
         if (!cartepioche.isEmpty()) {
-            String carteAReplacer = p.chooseCard("Choisissez la carte a remettre en premier dans la pioche, la deuxieme sera place automatiquement", cartepioche, false);
+            String carteAReplacer = p.chooseCard("Choisissez la carte a remettre en premier dans la pioche, la deuxieme sera mise automatiquement", cartepioche, false);
             if (carteAReplacer.equals(cartepioche1.toString())) {
                 p.addToDraw(cartepioche1);
                 p.addToDraw(cartepioche2);
