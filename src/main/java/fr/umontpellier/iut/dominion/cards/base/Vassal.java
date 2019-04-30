@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
@@ -25,9 +26,9 @@ public class Vassal extends Action {
     public void play(Player p) {
     p.incrementMoney(2);
         Card cartepioche = p.drawCard();
-        List<String> choices = Arrays.asList("y","n");
-        if (cartepioche.getTypes().equals("Action")){
-            String answer =p.chooseOption("voulez vous jouer la carte "+cartepioche.getName()+"? (y/n)",choices,false);
+        List<String> choices = Arrays.asList("y", "n");
+        if (cartepioche.getTypes().contains(CardType.Action)){
+            String answer=p.chooseOption("voulez vous jouer la carte "+cartepioche.getName()+"? (y/n)",choices,false);
             if (answer.equals("y")){
                 p.addToHand(cartepioche);
                 p.playCard(cartepioche.getName());
