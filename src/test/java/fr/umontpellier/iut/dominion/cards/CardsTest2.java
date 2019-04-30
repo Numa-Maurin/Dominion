@@ -252,7 +252,6 @@ class CardsTest2 {
         assertEquals(silver, p1.getDraw().get(0));      // Silver est sur le deck
     }
 
-    @Disabled
     @Test
     void testVassalPlayAction() {
         p1.getHand().add(new Vassal());
@@ -269,7 +268,6 @@ class CardsTest2 {
         assertTrue(p1.getInPlay().contains(village));
     }
 
-    @Disabled
     @Test
     void testVassalNotAction() {
         p1.getHand().add(new Vassal());
