@@ -24,13 +24,13 @@ public class Artisan extends Action {
         ListOfCards wincards = new ListOfCards();
 
         for(Card c : p.getGame().availableSupplyCards()) {
-            wincards.add(c);
+            if (c.getCost() <= 5) {
+                wincards.add(c);
+            }
         }
         String card1 = p.chooseCard("Choisissez la carte que vous désirez gagner coûtant jusqu'à 5 pièces", wincards, false);
-           if (p.getGame().getFromSupply(card1).getCost()<5){
-                p.addToHand(p.getGame().getFromSupply(card1));
-            }
-        String card2 = p.chooseCard("Choisiseez la carte que vous voulez replacer sur le deck",p.getCardsInHand(), false);
+        p.addToHand(p.getGame().getFromSupply(card1));
+        String card2 = p.chooseCard("Choisisez la carte que vous voulez replacer sur le deck", p.getCardsInHand(), false);
         p.addToDraw(p.removeFromHand(card2));
     }
 }
