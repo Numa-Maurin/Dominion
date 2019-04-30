@@ -38,32 +38,32 @@ public class Sentry extends Action {
         System.out.println("les deux premieres cartes de la pioches sont :"+cartepioche.toString());
         for (int i = 0; i < 2; i++) {
             String carteAEcarter = p.chooseCard("Choisissez une carte a ecarter",cartepioche, true);
-            if (carteAEcarter==cartepioche1.toString()) {
+            if (carteAEcarter.equals(cartepioche1.toString())) {
                 p.getGame().trash(cartepioche1);
                 cartepioche.remove(cartepioche1);
             }
-            else if (carteAEcarter==cartepioche2.toString()){
+            else if (carteAEcarter.equals(cartepioche2.toString())){
                 p.getGame().trash(cartepioche2);
                 cartepioche.remove(cartepioche2);
             }
         }
         for (int i = 0; i < 2; i++) {
             String carteADefauss = p.chooseCard("Choisissez une carte a defausser",cartepioche, true);
-            if (carteADefauss==cartepioche1.toString()) {
+            if (carteADefauss.equals(cartepioche1.toString())) {
                 p.discardCard(cartepioche1);
                 cartepioche.remove(cartepioche1);
             }
-            else if (carteADefauss==cartepioche2.toString()){
+            else if (carteADefauss.equals(cartepioche2.toString())){
                 p.discardCard(cartepioche2);
                 cartepioche.remove(cartepioche2);
             }
         }
         if (!cartepioche.isEmpty()) {
             String carteAReplacer = p.chooseCard("Choisissez la carte a remettre en premier dans la pioche, la deuxieme sera place automatiquement", cartepioche, false);
-            if (carteAReplacer == cartepioche1.toString()) {
+            if (carteAReplacer.equals(cartepioche1.toString())) {
                 p.addToDraw(cartepioche1);
                 p.addToDraw(cartepioche2);
-            } else if (carteAReplacer == cartepioche2.toString()) {
+            } else if (carteAReplacer.equals(cartepioche2.toString())) {
                 p.addToDraw(cartepioche2);
                 p.addToDraw(cartepioche1);
             }
