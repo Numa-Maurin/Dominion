@@ -2,9 +2,6 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.type.Attack;
-import fr.umontpellier.iut.dominion.cards.Card;
-
-import java.util.ArrayList;
 
 
 /**
@@ -27,7 +24,6 @@ public class Militia extends Attack {
                     while (o.getCardsInHand().size() > 3) {
                         String answer = o.chooseCard("Choisissez une carte dans votre main à défausser", o.getCardsInHand(), false);
                         o.discardCard(o.removeFromHand(answer));
-
                     }
                 }
             }
