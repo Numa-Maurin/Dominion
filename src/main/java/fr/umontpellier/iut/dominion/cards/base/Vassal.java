@@ -25,11 +25,11 @@ public class Vassal extends Action {
     public void play(Player p) {
     p.incrementMoney(2);
         Card cartepioche = p.drawCard();
-        List<String> choices = Arrays.asList("y", "n");
-        if (cartepioche.getTypes().equals("Action")){ //et les types actions reaction ?
-            String answer =p.choose("voulez vous jouer la carte action"+cartepioche.getName()+"? (y/n)",choices,false,false);
+        List<String> choices = Arrays.asList("y","n");
+        if (cartepioche.getTypes().equals("Action")){
+            String answer =p.chooseOption("voulez vous jouer la carte "+cartepioche.getName()+"? (y/n)",choices,false);
             if (answer.equals("y")){
-                p.getInPlay().add(cartepioche);
+                p.addToHand(cartepioche);
                 p.playCard(cartepioche.getName());
             }
             else if(answer.equals("n")){
