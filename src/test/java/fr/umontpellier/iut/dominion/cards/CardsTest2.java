@@ -233,7 +233,6 @@ class CardsTest2 {
         assertTrue(p1.getDiscard().contains(duchy2));
     }
 
-    @Disabled
     @Test
     void testArtisan() {
         Card silver = new Silver();
