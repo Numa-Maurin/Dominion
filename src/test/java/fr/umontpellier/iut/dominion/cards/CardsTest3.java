@@ -144,7 +144,6 @@ class CardsTest3 {
         assertFalse(p1.getDiscard().contains(gold));
     }
 
-    @Disabled
     @Test
     void testMerchant() {
         p1.getHand().add(new Merchant());

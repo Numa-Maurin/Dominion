@@ -24,11 +24,5 @@ public class Merchant extends Action {
     public void play(Player p) {
         p.drawToHand();
         p.incrementActions(1);
-        ListOfCards carteEnMain=p.getCardsInHand();
-        for (Card c:carteEnMain) {
-            if (c.getName().equals("silver")){
-
-            }
-        }
     }
 }
