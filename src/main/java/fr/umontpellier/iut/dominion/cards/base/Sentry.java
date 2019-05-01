@@ -1,13 +1,10 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Carte Sentinelle (Sentry)
@@ -30,45 +27,52 @@ public class Sentry extends Action {
     public void play(Player p) {
         p.incrementActions(1);
         p.drawToHand();
-        Card cartepioche1 = p.drawCard();
-        Card cartepioche2 = p.drawCard();
-        ListOfCards cartepioche= new ListOfCards();
-        cartepioche.add(cartepioche1);
-        cartepioche.add(cartepioche2);
-        System.out.println("les deux premieres cartes de la pioches sont :"+cartepioche.toString());
+        Card carte1 = p.drawCard();
+        Card carte2 = p.drawCard();
+        ArrayList<String> cartepioche = new ArrayList<>();
+        String cardName1 = "";
+        String cardName2 = "";
+        if (carte1 != null) {
+            cardName1 = carte1.getName();
+            cartepioche.add(cardName1);
+        }
+        if (carte2 != null) {
+            cardName2 = carte2.getName();
+            cartepioche.add(cardName2);
+        }
         for (int i = 0; i < 2; i++) {
-            String carteAEcarter = p.chooseCard("Choisissez une carte a ecarter",cartepioche, true);
-            if (carteAEcarter.equals(cartepioche1.toString())) {
-                p.getGame().trash(cartepioche1);
-                cartepioche.remove(cartepioche1);
+            String carteAEcarter = p.chooseOption("Choisissez une carte a ecarter",cartepioche, true);
+            if (carteAEcarter.equals(cardName1)) {
+                p.getGame().trash(carte1);
+                cartepioche.remove(cardName1);
             }
-            else if (carteAEcarter.equals(cartepioche2.toString())){
-                p.getGame().trash(cartepioche2);
-                cartepioche.remove(cartepioche2);
+            else if (carteAEcarter.equals(cardName2)){
+                p.getGame().trash(carte2);
+                cartepioche.remove(cardName2);
             }
         }
         for (int i = 0; i < 2; i++) {
-            String carteADefauss = p.chooseCard("Choisissez une carte a defausser",cartepioche, true);
-            if (carteADefauss.equals(cartepioche1.toString())) {
-                p.discardCard(cartepioche1);
-                cartepioche.remove(cartepioche1);
+            String carteADefausser = p.chooseOption("Choisissez une carte a defausser",cartepioche, true);
+            if (carteADefausser.equals(cardName1)) {
+                p.discardCard(carte1);
+                cartepioche.remove(cardName1);
             }
-            else if (carteADefauss.equals(cartepioche2.toString())){
-                p.discardCard(cartepioche2);
-                cartepioche.remove(cartepioche2);
+            else if (carteADefausser.equals(cardName2)){
+                p.discardCard(carte2);
+                cartepioche.remove(cardName2);
             }
-            else if (carteADefauss.equals("")){
+            else if (carteADefausser.equals("")){
                 break;
             }
         }
         if (!cartepioche.isEmpty()) {
-            String carteAReplacer = p.chooseCard("Choisissez la carte a remettre en premier dans la pioche, la deuxieme sera mise automatiquement", cartepioche, false);
-            if (carteAReplacer.equals(cartepioche1.toString())) {
-                p.addToDraw(cartepioche1);
-                p.addToDraw(cartepioche2);
-            } else if (carteAReplacer.equals(cartepioche2.toString())) {
-                p.addToDraw(cartepioche2);
-                p.addToDraw(cartepioche1);
+            String carteAReplacer = p.chooseOption("Choisissez la carte a remettre en premier dans la pioche, la deuxieme sera mise automatiquement", cartepioche, false);
+            if (carteAReplacer.equals(cardName1)) {
+                p.addToDraw(carte1);
+                p.addToDraw(carte2);
+            } else if (carteAReplacer.equals(cardName2)) {
+                p.addToDraw(carte2);
+                p.addToDraw(carte1);
             }
         }
     }

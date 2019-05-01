@@ -1,7 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.type.Action;
 
 /**
@@ -22,8 +21,8 @@ public class Poacher extends Action {
         p.incrementActions(1);
         p.drawToHand();
         p.incrementMoney(1);
-        int nbrCarteADeffausser = p.getGame().nonAvailableSupplyCards().size();
-        for (int i = 0; i < nbrCarteADeffausser; i++) {
+        int nbrCartesADefausser = p.getGame().nonAvailableSupplyCards().size();
+        for (int i = 0; i < nbrCartesADefausser; i++) {
             String answer = p.chooseCard("Choisissez une carte a defausser", p.getCardsInHand(), false);
             p.discardCard(p.removeFromHand(answer));
         }

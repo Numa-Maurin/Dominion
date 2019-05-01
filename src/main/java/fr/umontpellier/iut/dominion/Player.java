@@ -282,7 +282,9 @@ public class Player {
      */
     public Card drawToHand() {
         Card carte = drawCard();
-        addToHand(carte);
+        if (carte != null) {
+            addToHand(carte);
+        }
         return carte;
     }
 
@@ -443,7 +445,7 @@ public class Player {
         for (Card c : game.availableSupplyCards()) {
             if (c.getName().equals(cardName)) {
                 game.removeFromSupply(c.getName());
-                discardCard(c);
+                gain(c);
                 return c;
             }
         }
