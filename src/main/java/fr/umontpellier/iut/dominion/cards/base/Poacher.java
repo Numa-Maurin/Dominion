@@ -22,11 +22,7 @@ public class Poacher extends Action {
         p.incrementActions(1);
         p.drawToHand();
         p.incrementMoney(1);
-        int nbrCarteADeffausser =17-(p.getGame().availableSupplyCards().size());
-        /*
-        17 est le nombre total de pile en debut de jeu (cartes communes + royaumes)
-        (p.getGame().availableSupplyCards().size()) est le nbr de piles non vides
-        */
+        int nbrCarteADeffausser = p.getGame().nonAvailableSupplyCards().size();
         for (int i = 0; i < nbrCarteADeffausser; i++) {
             String answer = p.chooseCard("Choisissez une carte a defausser", p.getCardsInHand(), false);
             p.discardCard(p.removeFromHand(answer));

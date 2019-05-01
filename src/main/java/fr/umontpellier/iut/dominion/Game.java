@@ -151,6 +151,23 @@ public class Game {
     }
 
     /**
+     * Renvoie la liste des cartes qui ne sont pas disponibles à l'achat dans la
+     * réserve.
+     *
+     * @return une liste de cartes contenant la première carte de chaque pile
+     * vide de la réserve (cartes royaume et cartes communes)
+     */
+    public ListOfCards nonAvailableSupplyCards() {
+        ListOfCards cartesNonDisponibles = new ListOfCards();
+        for (ListOfCards l : supplyStacks) {
+            if (l.isEmpty()) {
+                cartesNonDisponibles.add(l.getCard(l.toString()));
+            }
+        }
+        return cartesNonDisponibles;
+    }
+
+    /**
      * Renvoie une représentation de l'état de la partie sous forme d'une chaîne
      * de caractères.
      *
