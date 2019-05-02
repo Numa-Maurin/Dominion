@@ -16,10 +16,12 @@ public class Moneylender extends Action {
     }
 
     public void play(Player p){
+        boolean actionFaite = false;
         for (Card c:p.getCardsInHand()){
-            if (c.getName().equals("Copper")){
+            if (c.getName().equals("Copper") && !actionFaite){
                 p.getGame().trash(p.removeFromHand(c.getName()));
                 p.incrementMoney(3);
+                actionFaite = true;
             }
         }
     }

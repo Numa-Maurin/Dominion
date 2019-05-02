@@ -5,7 +5,6 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -160,6 +159,21 @@ class CardsTest2 {
 
         assertEquals(0, p2.getMoney());
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
+    }
+
+    @Test
+    void testMoneylenderTwoCopper() {
+        p2.getHand().clear();
+        p2.getHand().add(new Moneylender());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Copper());
+        p2.getHand().add(new Copper());
+
+        p2.playCard("Moneylender");
+
+        assertEquals(3, p2.getMoney());
+        assertTrue(hasCards(p2.getHand(), "Silver", "Silver", "Copper"));
     }
 
 

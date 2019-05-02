@@ -53,7 +53,8 @@ public class DominionServer {
         // String[] kingdomCards = new String[0];
 
         // Option 2. Liste explicite de cartes royaume à utiliser (le nombre de cartes peut être quelconque)
-        String[] kingdomCards = new String[]{"CouncilRoom", "Festival", "Laboratory", "Smithy", "Village", "Cellar", "Harbinger","Poacher","Merchant","Sentry"};
+        String[] kingdomCards = new String[]{"Moat", "Moneylender", "Remodel", "ThroneRoom", "Vassal", "Village", "Witch","Workshop","Militia","Mine"};
+        // "Artisan", "Bandit", "Bureaucrat", "Chapel", "Gardens", "Library", "Laboratory","Market","Militia","Mine", "CouncilRoom", "Festival", "Laboratory", "Smithy", "Village", "Cellar", "Harbinger","Poacher","Merchant","Sentry"
 
         // Option 3. Choix aléatoire de 10 cartes parmi la liste complète allKingdomCards définie précédemment
         // String[] kingdomCards = allKingdomCards.subList(0, 10).toArray(new String[0]);
