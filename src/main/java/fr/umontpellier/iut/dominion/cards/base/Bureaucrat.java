@@ -21,7 +21,7 @@ public class Bureaucrat extends Attack {
         p.addToDraw(p.getGame().getFromSupply("Silver"));
         ListOfCards victorycards = new ListOfCards();
 
-        for (Player o : p.getOtherPlayers()) {
+        for (Player o : p.getNonReactingPlayers()) {
             for (Card c : o.getCardsInHand()) {
                 if (c.getTypes().contains(CardType.Victory)) {
                     victorycards.add(c);
