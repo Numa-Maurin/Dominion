@@ -87,4 +87,15 @@ public abstract class Card {
     public int getVictoryValue(Player p) {
         return 0;
     }
+
+    /**
+     * Exécute la réaction de la carte, jouée par le joueur {@code p}
+     *
+     * @param p joueur qui exécute l'effet de la carte
+     *
+     * L'action de cette méthode dépend de la classe de la carte.
+     */
+    public boolean react(Player p) {
+        return false;
+    }
 }

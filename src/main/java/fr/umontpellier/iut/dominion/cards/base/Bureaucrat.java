@@ -21,15 +21,17 @@ public class Bureaucrat extends Attack {
         p.addToDraw(p.getGame().getFromSupply("Silver"));
         ListOfCards victorycards = new ListOfCards();
 
-        for (Player o : p.getNonReactingPlayers()) {
-            for (Card c : o.getCardsInHand()) {
-                if (c.getTypes().contains(CardType.Victory)) {
-                    victorycards.add(c);
+        for (Player o : p.getOtherPlayers()) {
+            if (!o.getReaction()) {
+                for (Card c : o.getCardsInHand()) {
+                    if (c.getTypes().contains(CardType.Victory)) {
+                        victorycards.add(c);
+                    }
                 }
-            }
 
-            String victory = o.chooseCard("Choisissez une carte victoire à poser sur votre deck", victorycards, false);
-            o.addToDraw(o.removeFromHand(victory));
+                String victory = o.chooseCard("Choisissez une carte victoire à poser sur votre deck", victorycards, false);
+                o.addToDraw(o.removeFromHand(victory));
+            }
         }
     }
 }

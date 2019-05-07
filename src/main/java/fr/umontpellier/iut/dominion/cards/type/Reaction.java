@@ -1,9 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.type;
 
 import fr.umontpellier.iut.dominion.CardType;
-import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Reaction extends Action {

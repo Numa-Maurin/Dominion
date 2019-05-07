@@ -20,10 +20,12 @@ public class Militia extends Attack {
 
         p.incrementMoney(2);
 
-        for (Player o : p.getNonReactingPlayers()) {
-            while (o.getCardsInHand().size() > 3) {
-                String answer = o.chooseCard("Choisissez une carte dans votre main à défausser", o.getCardsInHand(), false);
-                o.discardCard(o.removeFromHand(answer));
+        for (Player o : p.getOtherPlayers()) {
+            if (!o.getReaction()) {
+                while (o.getCardsInHand().size() > 3) {
+                    String answer = o.chooseCard("Choisissez une carte dans votre main à défausser", o.getCardsInHand(), false);
+                    o.discardCard(o.removeFromHand(answer));
+                }
             }
         }
     }

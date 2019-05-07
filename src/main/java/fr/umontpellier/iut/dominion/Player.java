@@ -340,6 +340,15 @@ public class Player {
         return NoReaction;
     }
 
+    public boolean getReaction() {
+        for (Card c : getCardsInHand()) {
+            if (c.react(this)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Renvoie une représentation de l'état du joueur sous forme d'une chaîne
      * de caractères.
