@@ -70,6 +70,32 @@ class CardsTest3 {
     }
 
     @Test
+    void testMoatReactionMilitia() {
+        p0.getHand().clear();
+        p2.getHand().clear();
+
+        p0.getHand().add(new Moat());
+        p0.getHand().add(new Silver());
+        p0.getHand().add(new Gold());
+        p0.getHand().add(new Witch());
+        p0.getHand().add(new Bandit());
+
+        p1.getHand().add(new Militia());
+
+        p2.getHand().add(new Moat());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Gold());
+        p2.getHand().add(new Smithy());
+        p2.getHand().add(new Mine());
+
+
+        game.setInput("y", "n", "Silver", "Gold");
+        p1.playCard("Militia");
+        assertEquals(5, p2.getHand().size());
+        assertEquals(3, p0.getHand().size());
+    }
+
+    @Test
     void testThroneRoom() {
         p1.getHand().add(new ThroneRoom());
         p1.getHand().add(new Village());
