@@ -43,7 +43,7 @@ class CardsTest3 {
 
 
     @Test
-    void testMoatReaction() {
+    void testMoatReactionWitch() {
         p0.getHand().add(new Moat());
         p1.getHand().add(new Witch());
         p2.getHand().add(new Moat());
@@ -54,7 +54,20 @@ class CardsTest3 {
         assertNotNull(p0.getDiscard().getCard("Curse"));
     }
 
+    @Test
+    void testMoatReactionBandit() {
+        p0.getHand().add(new Moat());
+        p0.getDraw().add(0, new Silver());
+        p1.getHand().add(new Bandit());
+        p2.getHand().add(new Moat());
+        p2.getDraw().add(0, new Silver());
 
+        game.setInput("y", "n");
+        p1.playCard("Bandit");
+        assertNotNull(p2.getDraw().getCard("Silver"));
+        assertNull(p0.getDraw().getCard("Silver"));
+        assertNull(p0.getDiscard().getCard("Silver"));
+    }
 
     @Test
     void testThroneRoom() {
