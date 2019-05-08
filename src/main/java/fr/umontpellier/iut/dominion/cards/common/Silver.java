@@ -18,19 +18,19 @@ public class Silver extends Treasure {
     }
 
     public void play(Player p) {
-        boolean merchantPresent=false;
+        int merchantCount=0;
         int nbrDeSilver=0;
         for (Card c : p.getCardsInPlay()) {
             if (c.getName().equals("Merchant")){
-                merchantPresent =true;
+                merchantCount ++;
             }
             else if (c.getName().equals("Silver")){
                 nbrDeSilver=nbrDeSilver+1;
             }
         }
-        if(merchantPresent&&nbrDeSilver==1){
-            p.incrementMoney(3);
+        if(nbrDeSilver>1){
+            p.incrementMoney(2);
         }
-        else{ p.incrementMoney(2); }
+        else{ p.incrementMoney(2+merchantCount); }
     }
 }

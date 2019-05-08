@@ -201,6 +201,23 @@ class CardsTest3 {
     }
 
     @Test
+    void testMerchant2foisDansLeTour() {
+        p1.getHand().add(new Merchant());
+        p1.getHand().add(new Merchant());
+        p1.getHand().add(new Silver());
+        p1.getHand().add(new Silver());
+        p1.getHand().add(new Silver());
+
+        p1.playCard("Merchant");
+        p1.playCard("Merchant");
+
+        assertEquals(0, p1.getMoney());
+        p1.playCard("Silver");
+        assertEquals(4, p1.getMoney());
+        p1.playCard("Silver");
+    }
+
+    @Test
     void testSentryTrash1Discard1() {
         p1.getHand().add(new Sentry());
         Card silver = new Silver();
