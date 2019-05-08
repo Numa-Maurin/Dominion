@@ -107,6 +107,15 @@ class PlayerTest {
         assertNull(p.drawCard());
     }
 
+    @Test
+    void testDrawToHandNull(){
+        p.getHand().clear();
+        p.getDiscard().clear();
+        p.getDraw().clear();
+        assertNull(p.drawToHand());
+        assertEquals(0,p.getHand().size());
+    }
+
 
     @Test
     void testCardsInHand() {
