@@ -215,6 +215,7 @@ class CardsTest3 {
         p1.playCard("Silver");
         assertEquals(4, p1.getMoney());
         p1.playCard("Silver");
+        assertEquals(6, p1.getMoney());
     }
 
     @Test
