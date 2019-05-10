@@ -96,6 +96,31 @@ class CardsTest3 {
     }
 
     @Test
+    void testMoatReactionBureaucrat() {
+        p0.getHand().clear();
+        p0.getHand().add(new Estate());
+        p0.getHand().add(new Duchy());
+        p0.getHand().add(new Moat());
+
+        p1.getHand().add(new Bureaucrat());
+
+        p2.getHand().clear();
+        p2.getHand().add(new Moat());
+        p2.getHand().add(new Gold());
+        p2.getHand().add(new Copper());
+        p2.getHand().add(new Curse());
+
+        game.setInput("n", "y");
+        p1.playCard("Bureaucrat");
+
+        assertNotNull(p0.getHand().getCard("Estate"));   // p0 a Estate en main
+        assertNotNull(p0.getHand().getCard("Duchy"));       // p0 a Duchy en main
+        assertNotEquals("Duchy", p0.getDraw().get(0).getName());    // le Duchy n'est pas sur la pioche de p0
+        assertNotNull(p1.getDraw().getCard("Silver"));   // p1 a un Silver sur la pioche
+        assertEquals(4, p2.getHand().size());            // p0 a toujours les mêmes cartes en main
+    }
+
+    @Test
     void testThroneRoom() {
         p1.getHand().add(new ThroneRoom());
         p1.getHand().add(new Village());
@@ -178,6 +203,26 @@ class CardsTest3 {
         assertTrue(p0.getDiscard().contains(gold));     // p0 a défaussé le Gold
     }
 
+    @Test
+    void testBanditOnlyOneAndNone() {
+        p1.getHand().add(new Bandit());
+        Card gold = new Gold();
+        p2.getDraw().clear();
+        p0.getDraw().clear();
+        p2.getDiscard().clear();
+        p0.getDiscard().clear();
+        p0.getDraw().add(0, gold);
+
+        game.setInput();
+
+        p1.playCard("Bandit");
+
+        assertNotNull(p1.getDiscard().getCard("Gold"));
+        assertFalse(p0.getDiscard().contains(gold));
+        assertEquals(0,p0.getDiscard().size());
+        assertEquals(0,p2.getDiscard().size());
+        assertEquals(0,p2.getDraw().size());
+    }
 
     @Test
     void testHarbinger() {

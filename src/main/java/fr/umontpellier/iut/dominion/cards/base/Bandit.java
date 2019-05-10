@@ -28,27 +28,35 @@ public class Bandit extends Attack {
             if (!o.getReaction()) {
                 Card revealCard1 = o.drawCard();
                 Card revealCard2 = o.drawCard();
-                if ((revealCard1.getTypes().contains(Treasure) & revealCard2.getTypes().contains(Treasure)) && ((!revealCard1.getName().equals("Copper") &
-                        !revealCard2.getName().equals("Copper")) && !revealCard1.getName().equals(revealCard2.getName()))) {
-                    ListOfCards choice = new ListOfCards();
-                    choice.add(revealCard1);
-                    choice.add(revealCard2);
-                    if (o.chooseCard("Choisissez la carte à écarter", choice, false).equals(revealCard1.getName())) {
+                if (revealCard1 != null) {
+                    if (revealCard2 == null) {
+                        if (revealCard1.getTypes().contains(Treasure) && !revealCard1.getName().equals("Copper")) {
+                            o.getGame().getTrashedCards().add(revealCard1);
+                        } else {
+                            o.discardCard(revealCard1);
+                        }
+                    } else if ((revealCard1.getTypes().contains(Treasure) & revealCard2.getTypes().contains(Treasure)) && ((!revealCard1.getName().equals("Copper") &
+                            !revealCard2.getName().equals("Copper")) && !revealCard1.getName().equals(revealCard2.getName()))) {
+                        ListOfCards choice = new ListOfCards();
+                        choice.add(revealCard1);
+                        choice.add(revealCard2);
+                        if (o.chooseCard("Choisissez la carte à écarter", choice, false).equals(revealCard1.getName())) {
+                            o.getGame().getTrashedCards().add(revealCard1);
+                            o.discardCard(revealCard2);
+                        } else {
+                            o.getGame().getTrashedCards().add(revealCard2);
+                            o.discardCard(revealCard1);
+                        }
+                    } else if (revealCard1.getTypes().contains(Treasure) && !revealCard1.getName().equals("Copper")) {
                         o.getGame().getTrashedCards().add(revealCard1);
                         o.discardCard(revealCard2);
-                    } else {
+                    } else if (revealCard2.getTypes().contains(Treasure) && !revealCard2.getName().equals("Copper")) {
                         o.getGame().getTrashedCards().add(revealCard2);
                         o.discardCard(revealCard1);
+                    } else {
+                        o.discardCard(revealCard1);
+                        o.discardCard(revealCard2);
                     }
-                } else if (revealCard1.getTypes().contains(Treasure) && !revealCard1.getName().equals("Copper")) {
-                    o.getGame().getTrashedCards().add(revealCard1);
-                    o.discardCard(revealCard2);
-                } else if (revealCard2.getTypes().contains(Treasure) && !revealCard2.getName().equals("Copper")) {
-                    o.getGame().getTrashedCards().add(revealCard2);
-                    o.discardCard(revealCard1);
-                } else {
-                    o.discardCard(revealCard1);
-                    o.discardCard(revealCard2);
                 }
             }
         }
