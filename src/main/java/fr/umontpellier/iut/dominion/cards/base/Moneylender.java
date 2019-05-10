@@ -1,8 +1,13 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.common.Copper;
 import fr.umontpellier.iut.dominion.cards.type.Action;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Carte Prêteur sur gages (Moneylender)
@@ -16,12 +21,18 @@ public class Moneylender extends Action {
     }
 
     public void play(Player p){
-        boolean actionFaite = false;
+        boolean firstCopper = true;
+        ListOfCards choices = new ListOfCards();
         for (Card c:p.getCardsInHand()){
-            if (c.getName().equals("Copper") && !actionFaite){
-                p.getGame().trash(p.removeFromHand(c.getName()));
-                p.incrementMoney(3);
-                actionFaite = true;
+            if (c.getName().equals("Copper")){
+                if (firstCopper) {
+                    choices.add(new Copper());
+                    if (p.chooseCard("Do you want to use Moneylender ?", choices, true).equals("Copper")) {
+                        p.getGame().trash(p.removeFromHand("Copper"));
+                        p.incrementMoney(3);
+                    }
+                }
+                firstCopper = false;
             }
         }
     }

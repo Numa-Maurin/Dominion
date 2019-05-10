@@ -16,8 +16,10 @@ public class ThroneRoom extends Action {
 
     @Override
     public void play(Player p) {
-        String cardName = p.chooseCard("Choose an Action cards to play twice.",p.getCardsInHand(), false);
-        p.getCardsInHand().getCard(cardName).play(p);
-        p.playCard(cardName);
+        String cardName = p.chooseCard("Choose an Action cards to play twice.",p.getCardsInHand(), true);
+        if (cardName != "") {
+            p.getCardsInHand().getCard(cardName).play(p);
+            p.playCard(cardName);
+        }
     }
 }

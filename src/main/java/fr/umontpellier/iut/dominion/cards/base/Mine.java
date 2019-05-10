@@ -26,18 +26,20 @@ public class Mine extends Action {
                 treasurefromhands.add(c);
             }
         }
-        String cardName = p.chooseCard("Choisissez une carte trésor à écarter", treasurefromhands, false);
-        Card carte = p.removeFromHand(cardName);
-        int cost = carte.getCost()+3;
-        p.getGame().trash(carte);
+        String cardName = p.chooseCard("Choisissez une carte trésor à écarter", treasurefromhands, true);
+        if (cardName != "") {
+            Card carte = p.removeFromHand(cardName);
+            int cost = carte.getCost() + 3;
+            p.getGame().trash(carte);
 
-        for(Card c1 : p.getGame().availableSupplyCards()) {
-            if(c1.getTypes().contains(CardType.Treasure) && c1.getCost()<=cost){
-                treasurecards.add(c1);
+            for (Card c1 : p.getGame().availableSupplyCards()) {
+                if (c1.getTypes().contains(CardType.Treasure) && c1.getCost() <= cost) {
+                    treasurecards.add(c1);
+                }
             }
-        }
 
-        String cardchoose = p.chooseCard("Choisissez une carte Trésor coûtant jusqu'à 3 pièce de plus que la carte écartée", treasurecards,false);
-        p.addToHand(p.getGame().getFromSupply(cardchoose));
+            String cardchoose = p.chooseCard("Choisissez une carte Trésor coûtant jusqu'à 3 pièce de plus que la carte écartée", treasurecards, false);
+            p.addToHand(p.getGame().getFromSupply(cardchoose));
+        }
     }
 }

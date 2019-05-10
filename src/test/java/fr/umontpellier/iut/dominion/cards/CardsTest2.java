@@ -142,6 +142,7 @@ class CardsTest2 {
         p2.getHand().add(new Silver());
         p2.getHand().add(new Copper());
 
+        game.setInput("Copper");
         p2.playCard("Moneylender");
 
         assertEquals(3, p2.getMoney());
@@ -170,12 +171,27 @@ class CardsTest2 {
         p2.getHand().add(new Copper());
         p2.getHand().add(new Copper());
 
+        game.setInput("Copper");
         p2.playCard("Moneylender");
 
         assertEquals(3, p2.getMoney());
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver", "Copper"));
     }
 
+    @Test
+    void testMoneylenderCanPass() {
+        p2.getHand().clear();
+        p2.getHand().add(new Moneylender());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Copper());
+
+        game.setInput("");
+        p2.playCard("Moneylender");
+
+        assertEquals(0, p2.getMoney());
+        assertTrue(hasCards(p2.getHand(), "Silver", "Silver","Copper"));
+    }
 
     @Test
     void testRemodel() {
@@ -200,7 +216,6 @@ class CardsTest2 {
         assertEquals(6, p2.getHand().size());
     }
 
-
     @Test
     void testMine() {
         p2.getHand().clear();
@@ -216,6 +231,20 @@ class CardsTest2 {
         assertEquals(0, p2.getDiscard().size());
     }
 
+    @Test
+    void testMineCanPass() {
+        p2.getHand().clear();
+        p2.getHand().add(new Mine());
+        p2.getHand().add(new Estate());
+        p2.getHand().add(new Copper());
+        p2.getHand().add(new Silver());
+
+        game.setInput("");
+        p2.playCard("Mine");
+
+        assertTrue(hasCards(p2.getHand(), "Estate", "Silver", "Copper"));
+        assertEquals(0, p2.getDiscard().size());
+    }
 
     @Test
     void testWitch() {

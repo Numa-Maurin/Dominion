@@ -112,6 +112,22 @@ class CardsTest3 {
         assertEquals(7, p1.getHand().size());
     }
 
+    @Test
+    void testThroneRoomCanPass() {
+        p1.getHand().add(new ThroneRoom());
+        p1.getHand().add(new Village());
+
+        Card c1 = p1.getDraw().get(0);
+        Card c2 = p1.getDraw().get(1);
+
+        game.setInput("");
+        p1.playCard("Throne Room");
+
+        assertEquals(0, p1.getNumberOfActions());
+        assertFalse(p1.getHand().contains(c1));
+        assertFalse(p1.getHand().contains(c2));
+        assertEquals(6, p1.getHand().size());
+    }
 
     @Test
     void testLibrary() {
